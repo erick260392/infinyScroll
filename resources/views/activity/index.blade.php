@@ -28,7 +28,7 @@
     $(document).ready(function() {
         let nextPageUrl = '{{ $activity->nextPageUrl() }}';
         $(window).scroll(function() {
-            alert(nextPageUrl);
+       
             if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
                 if (nextPageUrl) {
                     loadMoreActivity();
@@ -45,7 +45,7 @@
                 },
                 success: function(data) {
                     nextPageUrl = data.nextPageUrl;
-                    $('activity-container').append(data.view);
+                    $('#activity-container').append(data.view);
                 },
                 error: function(xhr, status, error) {
                     console.error('Error loading more Activity');

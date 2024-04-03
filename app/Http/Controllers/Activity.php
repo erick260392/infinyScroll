@@ -13,7 +13,7 @@ class Activity extends Controller
     public function index(Request $request)
     {
 
-        $activity = ModelsActivity::latest()->paginate(20);
+        $activity = ModelsActivity::latest()->paginate(30);
 
 
         if ($request->ajax()) {
