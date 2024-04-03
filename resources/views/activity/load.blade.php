@@ -7,4 +7,7 @@
             <p>{{ $act->details }}</p>
         </div>
     </div>
+    <div id="loading" style="display: none; text-align: center;">
+        <p>Cargando más actividades...</p>
+    </div>
 @endforeach

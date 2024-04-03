@@ -28,7 +28,7 @@
     $(document).ready(function() {
         let nextPageUrl = '{{ $activity->nextPageUrl() }}';
         $(window).scroll(function() {
-       
+
             if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
                 if (nextPageUrl) {
                     loadMoreActivity();
@@ -41,14 +41,17 @@
                 url: nextPageUrl,
                 type: 'get',
                 beforeSend: function() {
+                    $('#loading').show(); // Muestra el mensaje de cargando
                     nextPageUrl = '';
                 },
                 success: function(data) {
                     nextPageUrl = data.nextPageUrl;
                     $('#activity-container').append(data.view);
+                    $('#loading').hide(); // Oculta el mensaje de cargando
                 },
                 error: function(xhr, status, error) {
                     console.error('Error loading more Activity');
+                    $('#loading').hide(); // Oculta el mensaje de cargando
                 }
             });
         }
